@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rotate Elements</title>
+    <style>
+      /* body {
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      } */
+
+      section {
+        overflow-y: hidden;
+        overflow-x: hidden;
+        /* background-color: #f2e359; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* border: 2px solid #ccc; */
+        width: 98vw;
+        height: 100vh;
+      }
+
+      .card-one {
+        overflow: hidden;
+        height: 250px;
+        width: 250px;
+        position: absolute;
+        top: -100px;
+        left: 25%;
+      }
+
+      .card-one > img {
+        width: inherit;
+      }
+
+      .card-two > img {
+        width: inherit;
+      }
+      .card-three > img {
+        width: inherit;
+      }
+
+      .card-four > img {
+        width: inherit;
+      }
+
+      .card-two {
+        height: 250px;
+        overflow: hidden;
+        width: 250px;
+        position: absolute;
+        transform: rotate(-90deg);
+        left: -100px;
+        top: 25%;
+      }
+
+      .card-three {
+        height: 250px;
+        width: 250px;
+        overflow: hidden;
+        position: absolute;
+        transform: rotate(180deg);
+        top: 70%;
+        right: 120px;
+      }
+      .card-four {
+        height: 250px;
+        width: 250px;
+        position: absolute;
+        transform: rotate(90deg);
+        overflow: hidden;
+        top: 25%;
+        left: 70%;
+      }
+
+      .main-circle {
+        position: relative;
+        top: 500px;
+      }
+
+      #image > #center-div {
+        position: relative;
+        bottom: 450px;
+        left: 30%;
+        width: 500px;
+        height: 500px;
+      }
+
+      .blur {
+        position: absolute;
+        bottom: 0px;
+        background-color: rgb(255, 255, 255);
+        filter: blur(50px);
+        width: 720px;
+        height: 200px;
+      }
+
+      .button-container {
+        position: absolute;
+        top: 350px;
+      }
+
+      button {
+        margin: 5px;
+        padding: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div id="image">
+        .
+        <img src="./circle.png" class="main-circle" alt="" />
+        <div class="card-Wrapper" id="center-div">
+          <div class="card-one">
+            <img src="./one.png" alt="" />
+          </div>
+          <div class="card-two">
+            <img src="./one.png" alt="" />
+          </div>
+          <div class="card-three">
+            <img src="./one.png" alt="" />
+          </div>
+          <div class="card-four">
+            <img src="./one.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="blur"></div>
+    </section>
+    <div class="button-container">
+      <button id="left-button">Left</button>
+      <button id="right-button">Right</button>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      let rotation = 0;
+      let rotationForCentreDiv = 0;
+
+      document
+        .getElementById("right-button")
+        .addEventListener("click", function () {
+          rotation += 25;
+          rotationForCentreDiv += 90;
+          gsap.to(".main-circle", {
+            rotate: rotation,
+            duration: 2,
+          });
+          gsap.to("#center-div", {
+            rotate: rotationForCentreDiv,
+            duration: 2,
+          });
+        });
+
+      document
+        .getElementById("left-button")
+        .addEventListener("click", function () {
+          rotation -= 25;
+          rotationForCentreDiv -= 90;
+          gsap.to(".main-circle", {
+            rotate: rotation,
+            duration: 2,
+          });
+          gsap.to("#center-div", {
+            rotate: rotationForCentreDiv,
+            duration: 2,
+          });
+        });
+    </script>
+  </body>
+</html>
